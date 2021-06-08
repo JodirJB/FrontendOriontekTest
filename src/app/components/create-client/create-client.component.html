@@ -1,0 +1,32 @@
+<div class="container mt-5">
+    <div>
+        <div class="text-center">
+            <h1>{{ title }}</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="card mt-5">
+            <div class="card-body text-center">
+                <form class="mt-3" [formGroup]="clientForm" (ngSubmit)="saveClient()">
+                    <div class="mb-3">
+                        <input formControlName="client" type="text" class="form-control form-control-lg" placeholder="Cliente">
+                        <div *ngIf="clientForm.get('client')?.hasError('required') && clientForm.get('client')?.touched" class="text-danger">
+                            <span>El nombre del cliente es <strong>obligatorio</strong></span>
+                        </div>
+                        <br>
+                        <input formControlName="address" type="text" class="form-control form-control-lg" placeholder="Dirección">
+                        <div *ngIf="clientForm.get('address')?.hasError('required') && clientForm.get('address')?.touched" class="text-danger">
+                            <span>La dirección del cliente es <strong>obligatoria</strong></span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-secondary btn-lg float-start" routerLink="/">Regresar</button>
+                        <button type="submit" [disabled]="clientForm.invalid" class="btn btn-success btn-lg float-end">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

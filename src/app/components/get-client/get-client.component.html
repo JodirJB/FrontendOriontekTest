@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <div>
+        <div class="text-center">
+            <h1>Direcciones</h1>
+            <button class="btn btn-success float-end" routerLink="/create-client">Agregar</button>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4 mt-5" *ngIf="clients.length > 0">
+        <div class="col" *ngFor="let client of clients">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Empresa: {{ client.client }} </h3> <br>
+                    <h6 class="card-title">Dirección:</h6>
+                    <p class="card-text">{{ client.address }}</p>
+                    <i [routerLink]="['/update-client', client._id]" class="fas fa-edit text-primary"></i>
+                    <i (click)="deleteClient(client._id)" class="fas fa-trash text-danger"></i>
+                </div>
+            </div> <br> <br>
+        </div>
+    </div>
+
+    <h5 style="text-align: center; margin-top: 100px;" *ngIf="clients.length == 0">No hay direcciones para mostrar.</h5>
+
+</div>
